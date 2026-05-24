@@ -1053,7 +1053,6 @@ extern "C" {
     /// <returns></returns>
     INTRINHASH_XIMPL_PUBLIC void intrinhash_init(intrinhash_state* ctx, uint64_t seed, int mode) {
         ctx->mode = mode;
-        ctx->mode = 0;
         ctx->lastodd = 0;
         ctx->inited = 1;
         ctx->length = 0;
@@ -1224,7 +1223,7 @@ int main(void) {
         {256, 712, 4160}, {512, 456, 4160}
     };
 
-    for (mode = 0; mode < INTRINHASH_XPRIV_HIGHEST_MODE; mode++) {
+    for (mode = 0; mode < INTRINHASH_XPRIV_HIGHEST_MODE + 1; mode++) {
         intrinhash_state ps;
         intrinhash_init(&ps, seed, mode);
         intrinhash_finalize(&ps, out, 32);
